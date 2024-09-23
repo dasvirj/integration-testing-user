@@ -18,6 +18,8 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-java:6.10.4'
     testImplementation 'io.cucumber:cucumber-junit:6.10.4'
     testImplementation 'org.hamcrest:hamcrest:3.0'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
 test {

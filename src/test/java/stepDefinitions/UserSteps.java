@@ -1,11 +1,11 @@
 package stepDefinitions;
 
 import fixtures.RequestInformations;
+import fixtures.UserDTO;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
-import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import utils.Utils;
 
@@ -13,7 +13,7 @@ public class UserSteps {
 
     @Given("as informacoes de um usuario")
     public void userInformations(){
-        RequestInformations.newUser = "{ \"name\": \"João Silva\", \"username\": \"joaosilva\", \"email\": \"joao.silva@example.com\" }";
+        UserDTO user = RequestInformations.user;
     }
 
     @When("realizo o seu cadastro")
@@ -21,7 +21,7 @@ public class UserSteps {
         RequestInformations.response = RestAssured
                 .given()
                 .spec(Utils.getRequestSpecAPI())
-                .body(RequestInformations.newUser)
+                .body(RequestInformations.user)
                 .when()
                 .post("/users");
     }
